@@ -18,7 +18,9 @@ html[data-theme="sombre"]{--fond:oklch(0.2 0.01 260);--surface:oklch(0.26 0.012 
 *{box-sizing:border-box}
 body{margin:0;background:var(--fond);color:var(--encre);font:400 1rem/1.55 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .3s ease-out,color .3s ease-out}
 .w{max-width:960px;margin:0 auto;padding:0 16px}
-header{display:flex;justify-content:space-between;align-items:center;height:64px}
+header{display:flex;justify-content:space-between;align-items:center;height:64px;position:sticky;top:0;z-index:10;background:var(--fond)}
+.skip{position:absolute;left:-9999px;top:8px}
+.skip:focus{left:16px;z-index:20;background:var(--action);color:var(--sur-action);padding:8px 12px;border-radius:8px;text-decoration:none}
 .logo{font-weight:600;letter-spacing:-.02em}
 .nav a{color:var(--sourd);text-decoration:none;font-size:.9375rem;margin-left:16px}
 .theme{background:none;border:1px solid var(--filet);color:var(--encre);border-radius:8px;width:38px;height:38px;font-size:1.05rem;cursor:pointer;margin-left:16px;transition:transform 160ms var(--ease-out)}
@@ -51,14 +53,15 @@ h2{font-size:1.75rem;letter-spacing:-.025em;font-weight:600;margin:0 0 24px}
 .plan ul{padding-left:18px;color:var(--sourd);margin:0;font-size:.9375rem}
 footer{padding:28px 0 40px;color:var(--sourd);font-size:.875rem;border-top:1px solid var(--filet)}
 footer a{color:var(--sourd)}
-@media (max-width:720px){.etapes,.prix{grid-template-columns:1fr}.nav{display:none}}
+@media (max-width:720px){.etapes,.prix{grid-template-columns:1fr}.nav a{margin-left:10px;font-size:.8125rem}}
 @media (max-width:400px){.row{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.foule i,button.btn,.theme,body{transition:none}button.btn:active,.theme:active{transform:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="w"><span class="logo">Réplique</span><nav class="nav"><a href="#comment">Comment</a><a href="#tarifs">Tarifs</a></nav><button class="theme" id="themeToggle" type="button" aria-label="Passer en mode clair">☀</button></header>
-<main class="w">
+<main class="w" id="contenu">
 <h1>Testez votre annonce sur 200 personnes avant de la publier.</h1>
 <p class="lead">Réplique fait réagir une foule d'agents IA à votre message. Vous voyez les avis avant vos vrais clients.</p>
 <div class="demo">
@@ -89,7 +92,7 @@ footer a{color:var(--sourd)}
 </div>
 </section>
 </main>
-<footer class="w">Démo : la simulation tourne dans votre navigateur, les résultats sont fictifs. · <a href="rgpd.html">Confidentialité</a> · <a href="cgu.html">CGU</a></footer>
+<footer class="w">Démo : la simulation tourne dans votre navigateur, les résultats sont fictifs. · <a href="rgpd.html">Confidentialité</a> · <a href="cgu.html">CGU</a> · Mis à jour le <time datetime="2026-10-13">13 octobre 2026</time></footer>
 <script>
 const N=60,foule=document.getElementById('foule'),dots=[];
 for(let i=0;i<N;i++){const d=document.createElement('i');foule.appendChild(d);dots.push(d)}
